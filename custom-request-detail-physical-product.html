@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splide.js Example</title>
+    <!-- Include Splide CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css" />
+    <link rel="stylesheet" href="https://fs.codelinden.com/wp-content/plugins/fansocial/assets/new-profile/theme.css" />
+    <link rel="stylesheet" href="https://fs.codelinden.com/wp-content/plugins/fansocial/assets/new-profile/main.css" />
+    <link rel="stylesheet"
+        href="https://fs.codelinden.com/wp-content/plugins/fansocial/assets/new-profile/customTachyons.css" />
+    <link rel="stylesheet"
+        href="https://fs.codelinden.com/wp-content/plugins/fansocial/assets/new-profile/profilePage.css" />
+    <link rel="stylesheet" href="./customTechyons.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.11/dist/css/splide.min.css">
+    <style>
+        .w-760{
+            width: 47.5rem;
+        }
+        .br1-5{
+            border-radius: 1.25rem;
+        }
+        .br15{
+            border-radius: 0.938rem;
+        }
+        .br10{
+            border-radius: 0.625rem;
+        }
+        .bg-blue-10{
+            background-color: rgba(108, 105, 255, 10%);
+        }
+        .p1-5{
+            padding: 1.5rem;
+        }
+        .pb1-5{
+            padding-bottom: 1.5rem;
+        }
+        .poppins {
+            font-family: "Poppins", sans-serif;
+            font-style: normal;
+        }
+        .gap-1{
+            gap:.5rem
+        }
+        .gap-2{
+            gap:1rem
+        }
+        .gray-5f{
+            color:#5F6369;
+        }
+        .blue-6c{
+            color:#6C69FF;
+        }
+        .lh-1-5{
+            line-height: 1.5rem;
+        }
+        .ws-2-5{
+            letter-spacing: 0.025rem;
+        }
+        .ws-2{
+            letter-spacing: 0.02rem;
+        }
+        .ws-0-5{
+            letter-spacing: 0.005rem;
+        }
+        .lh-auto{
+            line-height: normal;
+        }
+        .br-bf{
+            border-color: #BFCEDD;
+        }
+        .bg-6c{
+            background-color: #6C69FF;
+        }
+        .blue-sc{
+            color: #2C0DA7;
+        }
+        .bg-blue-33{
+            background-color: #3300FF;
+        }
+        .blue-33{
+            color: #3300FF;
+        }
+        .link:hover{
+            color: #3300FF;
+        }
+        .blue-33-op25{
+            border-color: rgba(51, 0, 255, 25%);
+        }
+        .gray-5f{
+            color: #5F6369;
+        }
+        .h-75{
+            height: .75rem;
+        }
+        .p-6{
+            padding: .375rem;
+        }
+        .link-fill:hover{
+            color: white;
+        }
+        .gray-30{
+            color: #303437;
+        }
+        
+    </style>
+</head>
+
+<body class="poppins">
+
+    <div class="center mt2 w-760 br1-5 bg-blue-10 p1-5">
+        <div class="flex gap-2 justify-between items-center mb3">
+            <div class="flex gap-1 items-center">
+                <img src="imgs/order-sm-image.svg" alt="">
+                <h4 class="m0 f5 black normal ws-2-5 lh-1-5"><span class="fw6">Order</span> #123456</h4>
+            </div>
+            <div class="flex gap-2 items-center">
+                <p class="m0 ml-auto gray-5f ws-0-5">Last update: Nov 29, 2023</p>
+                <a href="">
+                    <img src="imgs/ic-close.svg" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="ph3">
+            <h1 class="fw6 blue-6c ws-2-5 pb2 lh-auto">In Progress</h1>
+            <p class="black ws-2-5 f5 lh-1-5 pb1-5">@creator has received your custom request. Please message @creator to arrive a mutual consent for this order. You will be notified to pay once @creator agrees and confirms this order.</p>
+            
+            <ul class="steps flex mb3">
+                <li class="w-25">
+                    <a href="" class="flex flex-column gap-1">
+                        <span class="bg-6c br-pill br--left br b--white db h-75">&nbsp;</span>
+                        <p class="f6 fw6 tc lh-1-5 ws-2-5 blue-sc">Processing</p>
+                    </a>
+                </li>
+                <li class="w-25">
+                    <a href="" class="flex flex-column gap-1">
+                        <span class="bg-white br br-bf db h-75">&nbsp;</span>
+                        <p class="f6 fw6 tc lh-1-5 ws-2-5 gray-5f">Payment</p>
+                    </a>
+                </li>
+                <li class="w-25">
+                    <a href="" class="flex flex-column gap-1">
+                        <span class="bg-white br br-bf db h-75">&nbsp;</span>
+                        <p class="f6 fw6 tc lh-1-5 ws-2-5 gray-5f">Shipping</p>
+                    </a>
+                </li>
+                <li class="w-25">
+                    <a href="" class="flex flex-column gap-1">
+                        <span class="bg-white br-pill br--right br-bf db h-75">&nbsp;</span>
+                        <p class="f6 fw6 tc lh-1-5 ws-2-5 gray-5f">complete</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="bg-white br-15 p1-5">
+            <div class="flex gap-2 pb1-5">
+                <a class="flex gap-1 w-50 justify-center items-center f6 link ba blue-33-op25 br10 p-6 blue-33 bg-white" href="#0">
+                    <img src="imgs/ic-private-chat.svg" alt="">
+                    Chat with Jenny
+                </a>
+                <a class="flex gap-1 w-50 justify-center items-center f6 link-fill ba blue-33-op25 br10 p-6 white bg-blue-33" href="#0">
+                    <img src="imgs/ic-edit.svg" alt="">
+                    Edit Requirements and price
+                </a>
+            </div>
+            <div class="flex gap-2 pb2">
+                <div class="w-50">
+                    <p class="gray-5f f7 lh-auto ws-2-5 pb1">title</p>
+                    <span class="f5 gray-30 lh-auto ws-2-5">--</span>
+                </div>
+                <div class="w-50">
+                    <p class="gray-5f f7 lh-auto ws-2-5 pb1">Description</p>
+                    <span class="f5 gray-30 lh-auto ws-2-5">--</span>
+                </div>
+            </div>
+            <p class="gray-5f lh-auto ws-2-5 f7 pb1">Message from fan</p>
+            <p class="black ws-2-5 f5 lh-1-5 pb1-5">Hello this is the product request! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div class="flex gap-1 justify-between items-end">
+                <h3 class="fs4 black fw6 ws-2 lh-auto">Total</h3>
+                <h1 class="fs-40 lh-auto blue-33 ws-2 fw6">$5</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Splide JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.11/dist/js/splide.min.js"></script>
+    <script>
+       
+    </script>
+</body>
+
+</html>
