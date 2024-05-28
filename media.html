@@ -23,7 +23,7 @@
 
     <style>
         .container {
-            max-width: 1344px;
+            max-width: 90%;
             width: 100%;
         }
 
@@ -258,7 +258,11 @@
             padding: 0.375rem 0.625rem;
         }
         
-        
+        .splide__slide img{
+            vertical-align: bottom;
+            object-fit: cover;
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -462,11 +466,6 @@
                     </div>
                 </div>
             </div>
-
-          
-        
-
-
             <div class="mt4 pb4 center relative ">
                 <div class="flex items-center justify-between">
                     <h4 class="f4 fw6 yellow-e9 bl bl-yellow-e9 pl3">Watch Now</h4>
@@ -1284,6 +1283,7 @@
                 start  : 1,
                 arrows: false,
                 pagination: false,
+                perMove: 1,
                 gap: '16px',
                 breakpoints: {
                     640: { perPage: 1 },
