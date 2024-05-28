@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splide.js Example</title>
+    <!-- Include Splide CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css" />
+    <link rel="stylesheet" href="https://fs.codelinden.com/wp-content/plugins/fansocial/assets/new-profile/theme.css" />
+    <link rel="stylesheet" href="https://fs.codelinden.com/wp-content/plugins/fansocial/assets/new-profile/main.css" />
+    <link rel="stylesheet"
+        href="https://fs.codelinden.com/wp-content/plugins/fansocial/assets/new-profile/customTachyons.css" />
+    <link rel="stylesheet"
+        href="https://fs.codelinden.com/wp-content/plugins/fansocial/assets/new-profile/profilePage.css" />
+    <link rel="stylesheet" href="./customTechyons.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.11/dist/css/splide.min.css">
+
+    <style>
+        .container {
+            max-width: 1344px;
+            width: 100%;
+        }
+
+        .gap-1 {
+            gap: .5rem
+        }
+
+        .gap-2 {
+            gap: 1rem
+        }
+
+        .bg_body {
+            background: url(imgs/bg-media.png) no-repeat top center transparent;
+            filter: blur(150px);
+            -webkit-filter: blur(150px);
+            left: 0;
+            top: 0;
+            right: 0;
+            height: 80%;
+            position: absolute;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .bg_black_50 {
+            background-color: rgba(0, 0, 0, 70%);
+        }
+
+        .bg_blur_200 {
+            filter: blur(200px);
+            -webkit-filter: blur(200px);
+        }
+
+        .lh_20 {
+            line-height: 1.25rem;
+        }
+
+        .lh_24 {
+            line-height: 1.5rem;
+        }
+
+        .tracked_0 {
+            letter-spacing: 0;
+        }
+
+        .b--gray-warm-200 {
+            border-color: #E7E5E4;
+        }
+
+        .gray-warm-200 {
+            color: #E7E5E4;
+        }
+
+        .min_w_80 {
+            min-width: 80px;
+        }
+
+        .min_w_90 {
+            min-width: 90px;
+        }
+
+        .pb_14 {
+            padding-bottom: 0.875rem;
+        }
+
+        .green_9f {
+            color: #9FFF02
+        }
+
+        .bg--green-9f {
+            background-color: #9FFF02
+        }
+
+        .tracked_20 {
+            letter-spacing: 0.2rem;
+        }
+
+        .lh-auto {
+            line-height: normal;
+        }
+
+        .lh--18 {
+            line-height: 1.125rem;
+        }
+
+        .sup {
+            top: -0.7em;
+        }
+
+        .tab-hover li a:hover,
+        .tab-hover li a.active {
+            border-color: #E7E5E4 !important;
+            color: #E7E5E4 !important;
+        }
+
+        .bg_green_14 {
+            background-color: #14E04D;
+        }
+
+        .bg_red_ff {
+            background-color: #FF4848;
+        }
+
+        .br__red_ff {
+            border-color: #FF4848;
+        }
+
+        .dot {
+            width: .625rem;
+            height: .625rem;
+        }
+
+        .f8 {
+            font-size: .625rem;
+        }
+
+        .mb_50 {
+            margin-bottom: 3.125rem;
+        }
+
+        .splide__track {
+            overflow: visible;
+        }
+
+        .splide__slide .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(270deg, rgba(0, 0, 0, 0) 40%, black 100%);
+            color: white;
+            height: 100%;
+        }
+
+        .splide__arrow {
+            background: transparent;
+            border: none;
+            color: var(--col--light-warm-green);
+            border: 1px solid var(--col--light-warm-green);
+            border-radius: 0;
+            height: 48px;
+            width: 48px;
+        }
+
+        .elm_GqloCG {
+            color: #9FFF02;
+            border: 1px solid #9FFF02;
+            border-radius: 0;
+            height: 48px;
+            width: 48px;
+            transform: translate(0, -50%);
+            top: 50%;
+        }
+
+        .splide__pagination {
+            flex-wrap: nowrap;
+            bottom: 24px;
+            right: 100px;
+            gap: 10px;
+            left: 1200px;
+        }
+
+        .splide__pagination__page {
+            background: rgba(255, 255, 255, 0.5);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            transition: background 0.3s, width 0.3s;
+        }
+
+        .splide__pagination__page.is-active {
+            background: limegreen;
+            width: 20px;
+            border-radius: 10px;
+        }
+
+        .splide__arrow:hover {
+            background: limegreen;
+            color: black;
+        }
+
+        .pa__40 {
+            padding: 2.5rem;
+        }
+
+        .pt__24 {
+            padding-top: 1.5rem;
+        }
+
+        .splide__arrow--prev {
+            left: -25px;
+        }
+
+        .splide__arrow--prev svg {
+            transform: scaleX(1) !important;
+        }
+
+        .splide__arrow--next {
+            right: -10px;
+        }
+
+        .tracking-1 {
+            letter-spacing: 0.01rem;
+        }
+
+        .dark-10 {
+            color: #101828;
+        }
+
+        .col--iron-grey {
+            color: #F5F5F4
+        }
+
+        .yellow-e9 {
+            color: #E9E5D3
+        }
+
+        .bl-yellow-e9 {
+            border-color: #E9E5D3
+        }
+
+        .bg--dark-70 {
+            background-color: rgba(34, 34, 34, 70%);
+        }
+
+        .bg--purple-f0 {
+            background-color: #F093FB;
+        }
+    </style>
+</head>
+
+<body class="poppins">
+    <div class="bg_body">&nbsp;</div>
+    <div class="bg_black_50">
+        <div class="bg_black_50 mb_50">
+            <div class="container center ">
+                <header class="flex gap-1 justify-between items-end relative">
+                    <ul class="flex gap-2 tab-hover">
+                        <li>
+                            <a href=""
+                                class="f6 fw6 lh_20 tracked_0 ttu gray-warm-200 bb b--transparent pointer active tc min_w_80 db bw2 pb_14 ">FEED</a>
+                        </li>
+                        <li>
+                            <a href=""
+                                class="f6 fw6 lh_20 tracked_0 ttu gray-warm-200 bb b--transparent pointer tc min_w_90 db bw2 pb_14 ">MEDIA
+                                <sup class="green_9f lh-auto ws-2 sup">20</sup></a>
+                        </li>
+                        <li>
+                            <a href=""
+                                class="f6 fw6 lh_20 tracked_0 ttu gray-warm-200 bb b--transparent pointer tc min_w_90 db bw2 pb_14 ">MERCH
+                                <sup class="green_9f lh-auto ws-2 sup">5</sup></a>
+                        </li>
+                    </ul>
+                    <div class="pa2 flex gap-2 items-center">
+                        <div class="br b--gray-warm-200 pr3">
+                            <ul class="flex">
+                                <li>
+                                    <a href="">
+                                        <img src="imgs/ic-lock.svg" alt="">
+                                    </a>
+                                </li>
+                                <li class="relative">
+                                    <a href="">
+                                        <img src="imgs/ic-video.svg" alt="">
+                                        <span class="bg_green_14 dot br-100 absolute top-0 right-0">&nbsp;</span>
+                                    </a>
+                                </li>
+                                <li class="relative">
+                                    <a href="">
+                                        <img src="imgs/ic-chat.svg" alt="">
+                                        <span class="bg_green_14 dot br-100 absolute top-0 right-0">&nbsp;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="flex gap-2">
+                            <div>
+                                <div class="flex gap-1 items-center">
+                                    <p class="f6 fw6 lh_20 tracked_0 gray-warm-200">@jenny_098767</p>
+                                    <img src="imgs/ic-badge.svg" alt="">
+                                </div>
+                                <ul class="flex gap-1 mt2">
+                                    <li>
+                                        <a href="">
+                                            <img src="imgs/ic-btn-01.svg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <img src="imgs/ic-btn-02.svg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <img src="imgs/ic-btn-03.svg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <img src="imgs/ic-btn-04.svg" alt="">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="flex flex-column items-center">
+                                <div><img src="imgs/ic-user.png" alt=""></div>
+                                <p class="flex gap-1 mt--2 f8 gray-warm-200 ba br-pill br__red_ff pv1 ph2"><span
+                                        class="dot bg_red_ff db br-100">&nbsp;</span> LIVE</p>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </div>
+        </div>
+
+        <div class="container center">
+            <div id="event_slider" class="splide">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide relative">
+                            <img src="imgs/banner-img-01.png" alt="Slide 2" class="ma--auto">
+                            <div class="overlay absolute">
+                                <div class="flex flex-column justify-between h-100">
+                                    <p
+                                        class="self-start bg--light-warm-green flex items-center justify-center ph2 pv1 lh-auto tracking-1 dark-10 f5 fw6 ttu line-height-18 gap--6 col--very-dark-ebony">
+                                        COMING MAY 1
+                                    </p>
+                                    <div class="flex flex-column justify-end items-start pa__40 w-50">
+                                        <p class="f3 fw6 tracking-1 lh-auto col--iron-grey mb3">Detective Jenny: Who ate
+                                            my cake? Part II : I
+                                            found out who did</p>
+                                        <p class="f5 fw5 lh_24 tracking-1 col--iron-grey mb3">In part II of detective
+                                            Jenny series Jenny will
+                                            find out who eat her cake without asking.</p>
+                                        <button
+                                            class="col--light-warm-green fw6 f5 pr4 flex items-center gap--4 ba b--light-warm-green pa2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path
+                                                    d="M14.9997 19C14.9997 20.6569 13.6566 22 11.9997 22C10.3429 22 8.99972 20.6569 8.99972 19M13.7962 6.23856C14.2317 5.78864 14.4997 5.17562 14.4997 4.5C14.4997 3.11929 13.3804 2 11.9997 2C10.619 2 9.49972 3.11929 9.49972 4.5C9.49972 5.17562 9.76772 5.78864 10.2032 6.23856M17.9997 11.2C17.9997 9.82087 17.3676 8.49823 16.2424 7.52304C15.1171 6.54786 13.591 6 11.9997 6C10.4084 6 8.8823 6.54786 7.75708 7.52304C6.63186 8.49823 5.99972 9.82087 5.99972 11.2C5.99972 13.4818 5.43385 15.1506 4.72778 16.3447C3.92306 17.7056 3.5207 18.3861 3.53659 18.5486C3.55476 18.7346 3.58824 18.7933 3.73906 18.9036C3.87089 19 4.53323 19 5.85791 19H18.1415C19.4662 19 20.1286 19 20.2604 18.9036C20.4112 18.7933 20.4447 18.7346 20.4629 18.5486C20.4787 18.3861 20.0764 17.7056 19.2717 16.3447C18.5656 15.1506 17.9997 13.4818 17.9997 11.2Z"
+                                                    stroke="#9FFF02" stroke-width="1.25" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>Remind me</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide relative">
+                            <img src="imgs/banner-img-01.png" alt="Slide 2" class="ma--auto">
+                            <div class="overlay ">
+                                <div class="flex flex-column justify-between h-100">
+                                    <p
+                                        class="self-start bg--light-warm-green flex items-center justify-center ph2 pv1 lh-auto tracking-1 dark-10 f5 fw6 ttu line-height-18 gap--6 col--very-dark-ebony">
+                                        COMING MAY 1
+                                    </p>
+                                    <div class="flex flex-column justify-end pa__40 w-50">
+                                        <p class="f3 fw6 tracking-1 lh-auto col--iron-grey mb3">Detective Jenny: Who ate
+                                            my cake? Part II : I
+                                            found out who did</p>
+                                        <p class="f5 fw5 lh_24 tracking-1 col--iron-grey mb3">In part II of detective
+                                            Jenny series Jenny will
+                                            find out who eat her cake without asking.</p>
+                                        <button
+                                            class="col--light-warm-green fw6 f5 pr4 flex items-center gap--4 ba b--light-warm-green m--157 pa2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path
+                                                    d="M14.9997 19C14.9997 20.6569 13.6566 22 11.9997 22C10.3429 22 8.99972 20.6569 8.99972 19M13.7962 6.23856C14.2317 5.78864 14.4997 5.17562 14.4997 4.5C14.4997 3.11929 13.3804 2 11.9997 2C10.619 2 9.49972 3.11929 9.49972 4.5C9.49972 5.17562 9.76772 5.78864 10.2032 6.23856M17.9997 11.2C17.9997 9.82087 17.3676 8.49823 16.2424 7.52304C15.1171 6.54786 13.591 6 11.9997 6C10.4084 6 8.8823 6.54786 7.75708 7.52304C6.63186 8.49823 5.99972 9.82087 5.99972 11.2C5.99972 13.4818 5.43385 15.1506 4.72778 16.3447C3.92306 17.7056 3.5207 18.3861 3.53659 18.5486C3.55476 18.7346 3.58824 18.7933 3.73906 18.9036C3.87089 19 4.53323 19 5.85791 19H18.1415C19.4662 19 20.1286 19 20.2604 18.9036C20.4112 18.7933 20.4447 18.7346 20.4629 18.5486C20.4787 18.3861 20.0764 17.7056 19.2717 16.3447C18.5656 15.1506 17.9997 13.4818 17.9997 11.2Z"
+                                                    stroke="#9FFF02" stroke-width="1.25" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>Remind me</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="splide__arrows splide__arrows--ltr">
+                        <button id="prevButton"
+                            class="elm_GqloCG bg-transparent green_9f flex items-center justify-center absolute splide__arrow--prev"
+                            type="button" aria-label="Previous slide" aria-controls="splide01-track">
+                            <svg width="32" height="33" viewBox="0 0 32 33" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 24.5L12 16.5L20 8.5" stroke="#9FFF02" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            </svg>
+                        </button>
+                        <button id="nextButton"
+                            class="elm_GqloCG bg-transparent green_9f flex items-center justify-center absolute splide__arrow--next"
+                            type="button" aria-label="Next slide" aria-controls="splide01-track">
+                            <svg width="32" height="33" viewBox="0 0 32 33" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 24.5L20 16.5L12 8.5" stroke="#9FFF02" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt4 pb4 center relative ">
+                <div class="flex items-center justify-between">
+                    <h4 class="f4 fw6 yellow-e9 bl bl-yellow-e9 pl3">Watch Now</h4>
+                    <div class="splide__arrows splide__arrows--ltr">
+                        <button id="prevButtonSmall" class="splide__arrow__small splide__arrow--prev" type="button"
+                            aria-label="Previous slide" aria-controls="splide02-track">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" style="transform: rotate(180deg);">
+                                <path
+                                    d="M25.3337 16.0001H6.66699M6.66699 16.0001L16.0003 25.3334M6.66699 16.0001L16.0003 6.66675"
+                                    stroke="#E9E5D3" stroke-width="1.25" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <button id="nextButtonSmall" class="splide__arrow_small splide__arrow--next" type="button"
+                            aria-label="Next slide" aria-controls="splide02-track">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.66699 16.0001H25.3337M25.3337 16.0001L16.0003 6.66675M25.3337 16.0001L16.0003 25.3334"
+                                    stroke="#E9E5D3" stroke-width="1.25" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                        </button>
+                    </div>
+                </div>
+
+                <div id="splide_small" class="splide pt__24">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/vd-img-01.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column justify-between absolute">
+                                        <div class="self-start  flex items-center justify-center  pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div
+                                            class="self-start h--22 bg--light-warm-red flex items-center justify-center pr2 pl2 pt2 pb2 white fs--12 gap--4">
+                                            <svg width="10" height="11" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_8706_20430)">
+                                                    <path
+                                                        d="M2.08301 2.14154C2.08301 1.73689 2.08301 1.53457 2.16738 1.42304C2.24088 1.32588 2.35323 1.26575 2.47484 1.25849C2.61444 1.25015 2.78278 1.36238 3.11947 1.58684L7.50096 4.50783C7.77916 4.6933 7.91826 4.78604 7.96673 4.90292C8.00911 5.00511 8.00911 5.11996 7.96673 5.22215C7.91826 5.33903 7.77916 5.43176 7.50096 5.61723L3.11947 8.53822C2.78278 8.76268 2.61444 8.87491 2.47484 8.86658C2.35323 8.85932 2.24088 8.79919 2.16738 8.70203C2.08301 8.5905 2.08301 8.38817 2.08301 7.98352V2.14154Z"
+                                                        fill="white" stroke="white" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_8706_20430">
+                                                        <rect width="10" height="10" fill="white"
+                                                            transform="translate(0 0.0625)"></rect>
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            <p class="white f7">Play</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/vd-img-02.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column justify-between absolute">
+                                        <div class="self-start  flex items-center justify-center  pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div
+                                            class="self-start h--22 bg--light-warm-red flex items-center justify-center pr2 pl2 pt2 pb2 white fs--12 gap--4">
+                                            <svg width="10" height="11" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_8706_20430)">
+                                                    <path
+                                                        d="M2.08301 2.14154C2.08301 1.73689 2.08301 1.53457 2.16738 1.42304C2.24088 1.32588 2.35323 1.26575 2.47484 1.25849C2.61444 1.25015 2.78278 1.36238 3.11947 1.58684L7.50096 4.50783C7.77916 4.6933 7.91826 4.78604 7.96673 4.90292C8.00911 5.00511 8.00911 5.11996 7.96673 5.22215C7.91826 5.33903 7.77916 5.43176 7.50096 5.61723L3.11947 8.53822C2.78278 8.76268 2.61444 8.87491 2.47484 8.86658C2.35323 8.85932 2.24088 8.79919 2.16738 8.70203C2.08301 8.5905 2.08301 8.38817 2.08301 7.98352V2.14154Z"
+                                                        fill="white" stroke="white" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_8706_20430">
+                                                        <rect width="10" height="10" fill="white"
+                                                            transform="translate(0 0.0625)"></rect>
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            <p class="white f7">Play</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/vd-img-03.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column justify-between absolute">
+                                        <div class="self-start  flex items-center justify-center  pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div
+                                            class="self-start h--22 bg--light-warm-red flex items-center justify-center pr2 pl2 pt2 pb2 white fs--12 gap--4">
+                                            <svg width="10" height="11" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_8706_20430)">
+                                                    <path
+                                                        d="M2.08301 2.14154C2.08301 1.73689 2.08301 1.53457 2.16738 1.42304C2.24088 1.32588 2.35323 1.26575 2.47484 1.25849C2.61444 1.25015 2.78278 1.36238 3.11947 1.58684L7.50096 4.50783C7.77916 4.6933 7.91826 4.78604 7.96673 4.90292C8.00911 5.00511 8.00911 5.11996 7.96673 5.22215C7.91826 5.33903 7.77916 5.43176 7.50096 5.61723L3.11947 8.53822C2.78278 8.76268 2.61444 8.87491 2.47484 8.86658C2.35323 8.85932 2.24088 8.79919 2.16738 8.70203C2.08301 8.5905 2.08301 8.38817 2.08301 7.98352V2.14154Z"
+                                                        fill="white" stroke="white" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_8706_20430">
+                                                        <rect width="10" height="10" fill="white"
+                                                            transform="translate(0 0.0625)"></rect>
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            <p class="white f7">Play</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/vd-img-04.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column justify-between absolute">
+                                        <div class="self-start  flex items-center justify-center  pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div
+                                            class="self-start h--22 bg--light-warm-red flex items-center justify-center pr2 pl2 pt2 pb2 white fs--12 gap--4">
+                                            <svg width="10" height="11" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_8706_20430)">
+                                                    <path
+                                                        d="M2.08301 2.14154C2.08301 1.73689 2.08301 1.53457 2.16738 1.42304C2.24088 1.32588 2.35323 1.26575 2.47484 1.25849C2.61444 1.25015 2.78278 1.36238 3.11947 1.58684L7.50096 4.50783C7.77916 4.6933 7.91826 4.78604 7.96673 4.90292C8.00911 5.00511 8.00911 5.11996 7.96673 5.22215C7.91826 5.33903 7.77916 5.43176 7.50096 5.61723L3.11947 8.53822C2.78278 8.76268 2.61444 8.87491 2.47484 8.86658C2.35323 8.85932 2.24088 8.79919 2.16738 8.70203C2.08301 8.5905 2.08301 8.38817 2.08301 7.98352V2.14154Z"
+                                                        fill="white" stroke="white" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_8706_20430">
+                                                        <rect width="10" height="10" fill="white"
+                                                            transform="translate(0 0.0625)"></rect>
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            <p class="white f7">Play</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/vd-img-01.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column justify-between absolute">
+                                        <div class="self-start  flex items-center justify-center  pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div
+                                            class="self-start h--22 bg--light-warm-red flex items-center justify-center pr2 pl2 pt2 pb2 white fs--12 gap--4">
+                                            <svg width="10" height="11" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_8706_20430)">
+                                                    <path
+                                                        d="M2.08301 2.14154C2.08301 1.73689 2.08301 1.53457 2.16738 1.42304C2.24088 1.32588 2.35323 1.26575 2.47484 1.25849C2.61444 1.25015 2.78278 1.36238 3.11947 1.58684L7.50096 4.50783C7.77916 4.6933 7.91826 4.78604 7.96673 4.90292C8.00911 5.00511 8.00911 5.11996 7.96673 5.22215C7.91826 5.33903 7.77916 5.43176 7.50096 5.61723L3.11947 8.53822C2.78278 8.76268 2.61444 8.87491 2.47484 8.86658C2.35323 8.85932 2.24088 8.79919 2.16738 8.70203C2.08301 8.5905 2.08301 8.38817 2.08301 7.98352V2.14154Z"
+                                                        fill="white" stroke="white" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_8706_20430">
+                                                        <rect width="10" height="10" fill="white"
+                                                            transform="translate(0 0.0625)"></rect>
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            <p class="white f7">Play</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/vd-img-02.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column justify-between absolute">
+                                        <div class="self-start  flex items-center justify-center  pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div
+                                            class="self-start h--22 bg--light-warm-red flex items-center justify-center pr2 pl2 pt2 pb2 white fs--12 gap--4">
+                                            <svg width="10" height="11" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_8706_20430)">
+                                                    <path
+                                                        d="M2.08301 2.14154C2.08301 1.73689 2.08301 1.53457 2.16738 1.42304C2.24088 1.32588 2.35323 1.26575 2.47484 1.25849C2.61444 1.25015 2.78278 1.36238 3.11947 1.58684L7.50096 4.50783C7.77916 4.6933 7.91826 4.78604 7.96673 4.90292C8.00911 5.00511 8.00911 5.11996 7.96673 5.22215C7.91826 5.33903 7.77916 5.43176 7.50096 5.61723L3.11947 8.53822C2.78278 8.76268 2.61444 8.87491 2.47484 8.86658C2.35323 8.85932 2.24088 8.79919 2.16738 8.70203C2.08301 8.5905 2.08301 8.38817 2.08301 7.98352V2.14154Z"
+                                                        fill="white" stroke="white" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_8706_20430">
+                                                        <rect width="10" height="10" fill="white"
+                                                            transform="translate(0 0.0625)"></rect>
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            <p class="white f7">Play</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/vd-img-03.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column justify-between absolute">
+                                        <div class="self-start  flex items-center justify-center  pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div
+                                            class="self-start h--22 bg--light-warm-red flex items-center justify-center pr2 pl2 pt2 pb2 white fs--12 gap--4">
+                                            <svg width="10" height="11" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_8706_20430)">
+                                                    <path
+                                                        d="M2.08301 2.14154C2.08301 1.73689 2.08301 1.53457 2.16738 1.42304C2.24088 1.32588 2.35323 1.26575 2.47484 1.25849C2.61444 1.25015 2.78278 1.36238 3.11947 1.58684L7.50096 4.50783C7.77916 4.6933 7.91826 4.78604 7.96673 4.90292C8.00911 5.00511 8.00911 5.11996 7.96673 5.22215C7.91826 5.33903 7.77916 5.43176 7.50096 5.61723L3.11947 8.53822C2.78278 8.76268 2.61444 8.87491 2.47484 8.86658C2.35323 8.85932 2.24088 8.79919 2.16738 8.70203C2.08301 8.5905 2.08301 8.38817 2.08301 7.98352V2.14154Z"
+                                                        fill="white" stroke="white" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_8706_20430">
+                                                        <rect width="10" height="10" fill="white"
+                                                            transform="translate(0 0.0625)"></rect>
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            <p class="white f7">Play</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/vd-img-04.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column justify-between absolute">
+                                        <div class="self-start  flex items-center justify-center  pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div
+                                            class="self-start h--22 bg--light-warm-red flex items-center justify-center pr2 pl2 pt2 pb2 white fs--12 gap--4">
+                                            <svg width="10" height="11" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_8706_20430)">
+                                                    <path
+                                                        d="M2.08301 2.14154C2.08301 1.73689 2.08301 1.53457 2.16738 1.42304C2.24088 1.32588 2.35323 1.26575 2.47484 1.25849C2.61444 1.25015 2.78278 1.36238 3.11947 1.58684L7.50096 4.50783C7.77916 4.6933 7.91826 4.78604 7.96673 4.90292C8.00911 5.00511 8.00911 5.11996 7.96673 5.22215C7.91826 5.33903 7.77916 5.43176 7.50096 5.61723L3.11947 8.53822C2.78278 8.76268 2.61444 8.87491 2.47484 8.86658C2.35323 8.85932 2.24088 8.79919 2.16738 8.70203C2.08301 8.5905 2.08301 8.38817 2.08301 7.98352V2.14154Z"
+                                                        fill="white" stroke="white" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_8706_20430">
+                                                        <rect width="10" height="10" fill="white"
+                                                            transform="translate(0 0.0625)"></rect>
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            <p class="white f7">Play</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="pb4 center relative ">
+                <div class="flex items-center justify-between">
+                    <h4 class="f4 fw6 yellow-e9 bl bl-yellow-e9 pl3">Latest Upload</h4>
+                    <div class="splide__arrows splide__arrows--ltr">
+                        <button id="prevButtonLU" class="splide__arrow__small splide__arrow--prev" type="button"
+                            aria-label="Previous slide" aria-controls="splide02-track">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" style="transform: rotate(180deg);">
+                                <path
+                                    d="M25.3337 16.0001H6.66699M6.66699 16.0001L16.0003 25.3334M6.66699 16.0001L16.0003 6.66675"
+                                    stroke="#E9E5D3" stroke-width="1.25" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <button id="nextButtonLU" class="splide__arrow_small splide__arrow--next" type="button"
+                            aria-label="Next slide" aria-controls="splide02-track">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.66699 16.0001H25.3337M25.3337 16.0001L16.0003 6.66675M25.3337 16.0001L16.0003 25.3334"
+                                    stroke="#E9E5D3" stroke-width="1.25" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                        </button>
+                    </div>
+                </div>
+
+                <div id="splide_latest_upload" class="splide pt__24">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/lt_vd-img-01.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex gap-1">
+                                            <p class="white f7 ph2 pv1 bg--dark-70 lh--18">Subscribe or Buy</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/lt_vd-img-01.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex gap-1">
+                                            <p class="white f7 ph2 pv1 bg--dark-70 lh--18">Subscribe or Buy</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/lt_vd-img-02.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex">
+                                            <p class="white f7 ph2 pv1 bg--dark-70 lh--18">Buy Now</p>
+                                            <p class="black f7 ph2 pv1 bg--purple-f0 lh--18">10% OFF</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/lt_vd-img-03.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex">
+                                            <p class="black f7 ph2 pv1 bg--green-9f lh--18">Subscriber Exclusive</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/lt_vd-img-04.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex">
+                                            <p class="white f7 ph2 pv1 bg--dark-70 lh--18">Subscribe or Buy</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="pb4 center relative ">
+                <div class="flex items-center justify-between">
+                    <h4 class="f4 fw6 yellow-e9 bl bl-yellow-e9 pl3">Most Popular</h4>
+                    <div class="splide__arrows splide__arrows--ltr">
+                        <button id="prevButtonMP" class="splide__arrow__small splide__arrow--prev" type="button"
+                            aria-label="Previous slide" aria-controls="splide02-track">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" style="transform: rotate(180deg);">
+                                <path
+                                    d="M25.3337 16.0001H6.66699M6.66699 16.0001L16.0003 25.3334M6.66699 16.0001L16.0003 6.66675"
+                                    stroke="#E9E5D3" stroke-width="1.25" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <button id="nextButtonMP" class="splide__arrow_small splide__arrow--next" type="button"
+                            aria-label="Next slide" aria-controls="splide02-track">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.66699 16.0001H25.3337M25.3337 16.0001L16.0003 6.66675M25.3337 16.0001L16.0003 25.3334"
+                                    stroke="#E9E5D3" stroke-width="1.25" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                        </button>
+                    </div>
+                </div>
+
+                <div id="splide_most_popular" class="splide pt__24">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/mp_vd_img-01.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div
+                                            class="self-start h--22 bg--light-warm-red flex items-center justify-center pr2 pl2 pt2 pb2 white fs--12 gap--4">
+                                            <svg width="10" height="11" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_8706_20430)">
+                                                    <path
+                                                        d="M2.08301 2.14154C2.08301 1.73689 2.08301 1.53457 2.16738 1.42304C2.24088 1.32588 2.35323 1.26575 2.47484 1.25849C2.61444 1.25015 2.78278 1.36238 3.11947 1.58684L7.50096 4.50783C7.77916 4.6933 7.91826 4.78604 7.96673 4.90292C8.00911 5.00511 8.00911 5.11996 7.96673 5.22215C7.91826 5.33903 7.77916 5.43176 7.50096 5.61723L3.11947 8.53822C2.78278 8.76268 2.61444 8.87491 2.47484 8.86658C2.35323 8.85932 2.24088 8.79919 2.16738 8.70203C2.08301 8.5905 2.08301 8.38817 2.08301 7.98352V2.14154Z"
+                                                        fill="white" stroke="white" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_8706_20430">
+                                                        <rect width="10" height="10" fill="white"
+                                                            transform="translate(0 0.0625)"></rect>
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            <p class="white f7">Play</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/mp_vd_img-02.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex">
+                                            <p class="white f7 ph2 pv1 bg--dark-70 lh--18">Buy Now</p>
+                                            <p class="black f7 ph2 pv1 bg--purple-f0 lh--18">10% OFF</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/mp_vd_img-03.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex">
+                                            <p class="black f7 ph2 pv1 bg--green-9f lh--18">Subscriber Exclusive</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/mp_vd_img-04.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex">
+                                            <p class="white f7 ph2 pv1 bg--dark-70 lh--18">Subscribe or Buy</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/mp_vd_img-02.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex">
+                                            <p class="white f7 ph2 pv1 bg--dark-70 lh--18">Buy Now</p>
+                                            <p class="black f7 ph2 pv1 bg--purple-f0 lh--18">10% OFF</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/mp_vd_img-03.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex">
+                                            <p class="black f7 ph2 pv1 bg--green-9f lh--18">Subscriber Exclusive</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/mp_vd_img-04.png" class="w-100 h-100 contain" />
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex">
+                                            <p class="white f7 ph2 pv1 bg--dark-70 lh--18">Subscribe or Buy</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="pb4 center relative ">
+                <div class="flex items-center justify-between">
+                    <h4 class="f4 fw6 yellow-e9 bl bl-yellow-e9 pl3">Featured</h4>
+                    <div class="splide__arrows splide__arrows--ltr">
+                        <button id="prevButtonF" class="splide__arrow__small splide__arrow--prev" type="button"
+                            aria-label="Previous slide" aria-controls="splide02-track">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" style="transform: rotate(180deg);">
+                                <path
+                                    d="M25.3337 16.0001H6.66699M6.66699 16.0001L16.0003 25.3334M6.66699 16.0001L16.0003 6.66675"
+                                    stroke="#E9E5D3" stroke-width="1.25" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <button id="nextButtonF" class="splide__arrow_small splide__arrow--next" type="button"
+                            aria-label="Next slide" aria-controls="splide02-track">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.66699 16.0001H25.3337M25.3337 16.0001L16.0003 6.66675M25.3337 16.0001L16.0003 25.3334"
+                                    stroke="#E9E5D3" stroke-width="1.25" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                        </button>
+                    </div>
+                </div>
+
+                <div id="splide_featured" class="splide pt__24">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/lt_vd-img-02.png" class="w-100 h-100 contain">
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div class="flex">
+                                            <p class="white f7 ph2 pv1 bg--dark-70 lh--18">Buy Now</p>
+                                            <p class="black f7 ph2 pv1 bg--purple-f0 lh--18">10% OFF</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/lt_vd-img-04.png" class="w-100 h-100 contain">
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div class="flex">
+                                            <p class="white f7 ph2 pv1 bg--dark-70 lh--18">Subscribe or Buy</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/lt_vd-img-01.png" class="w-100 h-100 contain">
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div class="flex gap-1">
+                                            <p class="white f7 ph2 pv1 bg--dark-70 lh--18">Subscribe or Buy</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/f-img.png" class="w-100 h-100 contain">
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div class="flex">
+                                            <p class="white f7 ph2 pv1 bg--dark-70 lh--18">Buy Now</p>
+                                            <p class="black f7 ph2 pv1 bg--purple-f0 lh--18">10% OFF</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/lt_vd-img-02.png" class="w-100 h-100 contain">
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div class="flex">
+                                            <p class="white f7 ph2 pv1 bg--dark-70 lh--18">Buy Now</p>
+                                            <p class="black f7 ph2 pv1 bg--purple-f0 lh--18">10% OFF</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/lt_vd-img-04.png" class="w-100 h-100 contain">
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div class="flex">
+                                            <p class="white f7 ph2 pv1 bg--dark-70 lh--18">Subscribe or Buy</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/lt_vd-img-01.png" class="w-100 h-100 contain">
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div class="flex gap-1">
+                                            <p class="white f7 ph2 pv1 bg--dark-70 lh--18">Subscribe or Buy</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="relative w--324 h--186 flex flex-column justify-between items-end">
+                                    <img src="imgs/f-img.png" class="w-100 h-100 contain">
+                                    <div class="w-100 h-100 flex flex-column items-start justify-between absolute">
+                                        <div class="self-start flex items-center justify-center pa2">
+                                            <p class="f7 white">video</p>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.33333 5.97689C6.33333 5.6587 6.33333 5.4996 6.39983 5.41078C6.45778 5.33338 6.54648 5.28496 6.64292 5.27807C6.75359 5.27016 6.88742 5.3562 7.15507 5.52826L10.3021 7.55137C10.5344 7.70068 10.6505 7.77533 10.6906 7.87026C10.7257 7.9532 10.7257 8.0468 10.6906 8.12974C10.6505 8.22467 10.5344 8.29932 10.3021 8.44863L7.15507 10.4717C6.88742 10.6438 6.75359 10.7298 6.64292 10.7219C6.54648 10.715 6.45778 10.6666 6.39983 10.5892C6.33333 10.5004 6.33333 10.3413 6.33333 10.0231V5.97689Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                                <path
+                                                    d="M2 5.2C2 4.0799 2 3.51984 2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799C3.51984 2 4.0799 2 5.2 2H10.8C11.9201 2 12.4802 2 12.908 2.21799C13.2843 2.40973 13.5903 2.71569 13.782 3.09202C14 3.51984 14 4.0799 14 5.2V10.8C14 11.9201 14 12.4802 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.4802 14 11.9201 14 10.8 14H5.2C4.0799 14 3.51984 14 3.09202 13.782C2.71569 13.5903 2.40973 13.2843 2.21799 12.908C2 12.4802 2 11.9201 2 10.8V5.2Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div class="flex">
+                                            <p class="white f7 ph2 pv1 bg--dark-70 lh--18">Buy Now</p>
+                                            <p class="black f7 ph2 pv1 bg--purple-f0 lh--18">10% OFF</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Include Splide JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.11/dist/js/splide.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var splideMain = new Splide('#event_slider', {
+                type: 'loop',
+                perPage: 1,
+                focus: 'center',
+                padding: '0',
+                arrows: false,
+                pagination: true,
+            }).mount();
+
+            document.getElementById('prevButton').addEventListener('click', function () {
+                splideMain.go('<');
+            });
+
+            document.getElementById('nextButton').addEventListener('click', function () {
+                splideMain.go('>');
+            });
+
+            var splideSmall = new Splide('#splide_small', {
+                type: 'loop',
+                perPage: 4, // Adjust the number of slides per page as needed
+                gap: '2%',
+                arrows: false,
+                pagination: false,
+                gap: '16px',
+                breakpoints: {
+                    640: { perPage: 1 },
+                    768: { perPage: 2 },
+                    1024: { perPage: 3 },
+                }
+            }).mount();
+
+            document.getElementById('prevButtonSmall').addEventListener('click', function () {
+                splideSmall.go('<');
+            });
+
+            document.getElementById('nextButtonSmall').addEventListener('click', function () {
+                splideSmall.go('>');
+            });
+
+            var splideSmallLU = new Splide('#splide_latest_upload', {
+                type: 'loop',
+                perPage: 4, // Adjust the number of slides per page as needed
+                gap: '2%',
+                arrows: false,
+                pagination: false,
+                gap: '16px',
+                breakpoints: {
+                    640: { perPage: 1 },
+                    768: { perPage: 2 },
+                    1024: { perPage: 3 },
+                }
+            }).mount();
+
+            document.getElementById('prevButtonLU').addEventListener('click', function () {
+                splideSmallLU.go('<');
+            });
+
+            document.getElementById('nextButtonLU').addEventListener('click', function () {
+                splideSmallLU.go('>');
+            });
+
+            var splideSmallMP = new Splide('#splide_most_popular', {
+                type: 'loop',
+                perPage: 4, // Adjust the number of slides per page as needed
+                gap: '2%',
+                arrows: false,
+                pagination: false,
+                gap: '16px',
+                breakpoints: {
+                    640: { perPage: 1 },
+                    768: { perPage: 2 },
+                    1024: { perPage: 3 },
+                }
+            }).mount();
+
+            document.getElementById('prevButtonMP').addEventListener('click', function () {
+                splideSmallMP.go('<');
+            });
+
+            document.getElementById('nextButtonMP').addEventListener('click', function () {
+                splideSmallMP.go('>');
+            });
+
+            var splideSmallF = new Splide('#splide_featured', {
+                type: 'loop',
+                perPage: 4, // Adjust the number of slides per page as needed
+                gap: '2%',
+                arrows: false,
+                pagination: false,
+                gap: '16px',
+                breakpoints: {
+                    640: { perPage: 1 },
+                    768: { perPage: 2 },
+                    1024: { perPage: 3 },
+                }
+            }).mount();
+
+            document.getElementById('prevButtonF').addEventListener('click', function () {
+                splideSmallF.go('<');
+            });
+
+            document.getElementById('nextButtonF').addEventListener('click', function () {
+                splideSmallF.go('>');
+            });
+
+        });
+    </script>
+</body>
+
+</html>
